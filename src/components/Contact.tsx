@@ -299,6 +299,7 @@ const Contact = () => {
                   <option value="iv-cannulation">IV Cannulation - ₹200</option>
                   <option value="blood-collection">Blood Sample Collection - No extra charge</option>
                   <option value="dressing">Wound Dressing - ₹500 onwards</option>
+                  <option value="ng-tube-insertion">Nasogastric (NG) tube insertion - ₹1000</option>
                   <option value="other">Other Service</option>
                 </select>
               </div>

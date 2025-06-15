@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Activity, Syringe, TestTube, Droplets, Heart, Ban as Bandage, IndianRupee } from 'lucide-react';
+import { Activity, Syringe, TestTube, Droplets, Heart, Ban as Bandage, IndianRupee, Stethoscope } from 'lucide-react';
 
 const Pricing = () => {
   const services = [
@@ -47,6 +46,12 @@ const Pricing = () => {
       price: '500 onwards',
       description: 'Professional wound care according to condition severity',
       isVariable: true
+    },
+    {
+      icon: Stethoscope,
+      title: 'Nasogastric (NG) tube insertion',
+      price: 1000,
+      description: 'Expert insertion and management of nasogastric tubes for feeding or drainage'
     }
   ];
 

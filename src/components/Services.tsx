@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Activity, Syringe, TestTube, Heart, Droplets, Ban as Bandage, MoreHorizontal } from 'lucide-react';
+import { Activity, Syringe, TestTube, Heart, Droplets, Ban as Bandage, MoreHorizontal, Stethoscope } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -37,6 +37,11 @@ const Services = () => {
       icon: Bandage,
       title: 'Dressing',
       description: 'Professional wound care and dressing changes for optimal healing.'
+    },
+    {
+      icon: Stethoscope,
+      title: 'Nasogastric (NG) tube insertion',
+      description: 'Expert insertion and management of nasogastric tubes for feeding or drainage.'
     },
     {
       icon: MoreHorizontal,

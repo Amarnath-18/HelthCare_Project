@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
@@ -36,9 +36,9 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <img 
-              src="/WhatsApp Image 2025-06-15 at 11.19.41_be8207c0.jpg" 
+              src="/logo.png" 
               alt="Seecure Home Health Care Logo" 
-              className="h-12 w-12 rounded-full object-cover"
+              className="h-14 w-auto object-contain"
             />
             <span className="font-bold text-xl text-gray-800">
               Seecure Home Health Care
