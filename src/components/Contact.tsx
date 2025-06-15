@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageSquare, Send, Phone, Mail, Clock } from 'lucide-react';
+import { MessageSquare, Send, Phone, Mail, Clock, MapPin, AlertCircle } from 'lucide-react';
+
+// Import service areas from ServiceAreas component
+const serviceAreas = [
+  'Laketown',
+  'Kestopur', 
+  'Baguiati',
+  'Joramondir',
+  'Jyngra',
+  'Loknath Mandir',
+  'Teghoria',
+  'Chinar Park',
+  'Nopara',
+  'City Centre 2',
+  'Rajarhat'
+];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,21 +23,52 @@ const Contact = () => {
     email: '',
     phone: '',
     service: '',
+    serviceArea: '',
     message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [phoneError, setPhoneError] = useState('');
+
+  // Validate Indian phone number format
+  const validatePhoneNumber = (phone: string): boolean => {
+    // Basic Indian phone number validation (10 digits, optionally starting with +91 or 0)
+    const phoneRegex = /^(?:(?:\+|0{0,2})91(\s*[-]\s*)?|[0]?)?[6789]\d{9}$/;
+    return phoneRegex.test(phone);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    
+    // Validate phone in real-time as user types
+    if (name === 'phone') {
+      if (value && value.length >= 10) {
+        if (!validatePhoneNumber(value)) {
+          setPhoneError('Please enter a valid Indian phone number');
+        } else {
+          setPhoneError('');
+        }
+      } else {
+        setPhoneError('');
+      }
+    }
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate phone number before submission
+    if (!validatePhoneNumber(formData.phone)) {
+      setPhoneError('Please enter a valid Indian phone number (10 digits)');
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
@@ -36,7 +82,7 @@ const Contact = () => {
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', service: '', serviceArea: '', message: '' });
       } else {
         setSubmitStatus('error');
       }
@@ -128,6 +174,18 @@ const Contact = () => {
                     <p className="text-gray-600">Regular Hours: 8:00 AM - 8:00 PM</p>
                   </div>
                 </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="h-6 w-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-1">Service Areas</h4>
+                    <p className="text-gray-600">
+                      {serviceAreas.slice(0, 5).join(', ')} and surrounding areas
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -177,16 +235,31 @@ const Contact = () => {
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                     Phone Number *
                   </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                    placeholder="Your phone number"
-                  />
+                  <div className="relative">
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      pattern="[0-9+\s-]{10,15}"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      onBlur={() => {
+                        if (formData.phone && !validatePhoneNumber(formData.phone)) {
+                          setPhoneError('Please enter a valid Indian phone number');
+                        }
+                      }}
+                      className={`w-full px-4 py-3 border ${phoneError ? 'border-red-500 ring-1 ring-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors`}
+                      placeholder="Your phone number (e.g., 9876543210)"
+                    />
+                    {phoneError && (
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <AlertCircle className="h-5 w-5 text-red-500" />
+                      </div>
+                    )}
+                  </div>
+                  {phoneError && <p className="mt-2 text-sm text-red-600">{phoneError}</p>}
+                  {!phoneError && <p className="mt-1 text-xs text-gray-500">Enter a 10-digit number (e.g., 9876543210)</p>}
                 </div>
               </div>
 
@@ -208,13 +281,14 @@ const Contact = () => {
 
               <div>
                 <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                  Service Required
+                  Service Required *
                 </label>
                 <select
                   id="service"
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                 >
                   <option value="">Select a service</option>
@@ -230,17 +304,40 @@ const Contact = () => {
               </div>
 
               <div>
+                <label htmlFor="serviceArea" className="block text-sm font-medium text-gray-700 mb-2">
+                  Your Area *
+                </label>
+                <select
+                  id="serviceArea"
+                  name="serviceArea"
+                  value={formData.serviceArea}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                >
+                  <option value="">Select your area</option>
+                  {serviceAreas.map((area, index) => (
+                    <option key={index} value={area}>
+                      {area}
+                    </option>
+                  ))}
+                  <option value="other">Other Area (Please specify in message)</option>
+                </select>
+              </div>
+
+              <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
+                  Message *
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={4}
+                  required
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
-                  placeholder="Please provide details about your healthcare needs..."
+                  placeholder="Please provide details about your healthcare needs or specify an area not listed above..."
                 ></textarea>
               </div>
 
@@ -258,6 +355,8 @@ const Contact = () => {
                   </>
                 )}
               </button>
+              
+              <p className="text-sm text-gray-600 text-center mt-2">* All fields are required</p>
 
               {/* Status Messages */}
               {submitStatus === 'success' && (
@@ -267,8 +366,11 @@ const Contact = () => {
               )}
 
               {submitStatus === 'error' && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
-                  Sorry, there was an error sending your message. Please try again or call us directly.
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 flex items-center">
+                  <AlertCircle className="h-5 w-5 mr-2 text-red-600" />
+                  <span>
+                    Sorry, there was an error sending your message. Please try again or call us directly.
+                  </span>
                 </div>
               )}
             </form>
