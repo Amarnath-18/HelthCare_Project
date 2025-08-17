@@ -189,9 +189,12 @@ const SubServiceDetailPage = () => {
                 >
                   Book This Service
                 </Link>
-                <button className="w-full border-2 border-blue-600 text-blue-600 py-4 px-6 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-                  Call: +91 98765 43210
-                </button>
+                <a 
+                  href="tel:9593388865"
+                  className="w-full border-2 border-blue-600 text-blue-600 py-4 px-6 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-flex items-center justify-center"
+                >
+                  Call: 9593388865
+                </a>
               </div>
             </motion.div>
           </div>

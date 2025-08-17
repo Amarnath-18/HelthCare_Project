@@ -154,9 +154,12 @@ const ServiceDetailPage = () => {
               >
                 Book Now
               </Link>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-                Call: +91 98765 43210
-              </button>
+              <a 
+                href="tel:9593388865"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors inline-flex items-center justify-center"
+              >
+                Call: 9593388865
+              </a>
             </div>
           </div>
         </motion.div>
