@@ -1,6 +1,6 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Clock, Shield, Phone } from 'lucide-react';
+import { Clock, Shield, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -33,7 +33,7 @@ const Hero = () => {
               className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight"
             >
               We Provide Various{' '}
-              <span className="text-blue-600">Home Care</span> Services
+              <span className="text-blue-600">Health Care</span> Services
             </motion.h1>
 
             {/* Subheading */}
@@ -70,13 +70,38 @@ const Hero = () => {
                 <Phone className="h-5 w-5" />
                 <span>Call Now</span>
               </a>
-              <button
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              <Link
+                to="/services"
                 className="inline-flex items-center justify-center space-x-2 border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
               >
                 <Shield className="h-5 w-5" />
                 <span>Our Services</span>
-              </button>
+              </Link>
+            </motion.div>
+
+            {/* Contact Information */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="space-y-3 pt-4 border-t border-gray-200"
+            >
+              <div className="flex items-center space-x-3">
+                <Phone className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-700 font-medium">Primary: 9593388865</p>
+                  <p className="text-gray-600">Secondary: 6295328031</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Mail className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                <a 
+                  href="mailto:seecurehomehealthcare@gmail.com"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  seecurehomehealthcare@gmail.com
+                </a>
+              </div>
             </motion.div>
           </motion.div>
 

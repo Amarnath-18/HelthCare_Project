@@ -24,7 +24,7 @@ const Pricing = () => {
     {
       icon: Droplets,
       title: 'Urinary Catheterization',
-      price: 1000,
+      price: 700,
       description: 'Professional catheter insertion with sterile technique'
     },
     {
@@ -43,14 +43,14 @@ const Pricing = () => {
     {
       icon: Bandage,
       title: 'Wound Dressing',
-      price: '500 onwards',
+      price: '400 onwards',
       description: 'Professional wound care according to condition severity',
       isVariable: true
     },
     {
       icon: Stethoscope,
       title: 'Nasogastric (NG) tube insertion',
-      price: 1000,
+      price: 700,
       description: 'Expert insertion and management of nasogastric tubes for feeding or drainage'
     }
   ];
@@ -227,8 +227,8 @@ const Pricing = () => {
                   <span className="text-purple-600 text-sm font-bold">🏠</span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900">Home Visit Included</h4>
-                  <p className="text-gray-600 text-sm">No additional travel charges within service area</p>
+                  <h4 className="font-semibold text-gray-900">Home Visit Available</h4>
+                  <p className="text-gray-600 text-sm">Additional travel charges within service area</p>
                 </div>
               </div>
               

@@ -1,10 +1,13 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,9 +18,19 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsOpen(false);
   };
@@ -34,16 +47,16 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/logo.png" 
+              src="/image.png" 
               alt="Seecure Home Health Care Logo" 
-              className="h-14 w-auto object-contain"
+              className="h-16 w-auto rounded-full object-cover"
             />
-            <span className="font-bold text-xl text-gray-800">
-              Seecure Home Health Care
+            <span className="font-bold text-2xl text-blue-600">
+              SEECURE
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:block">
@@ -54,12 +67,12 @@ const Navbar = () => {
               >
                 Home
               </button>
-              <button
-                onClick={() => scrollToSection('services')}
+              <Link
+                to="/services"
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
               >
-                Services
-              </button>
+                All Services
+              </Link>
               <button
                 onClick={() => scrollToSection('service-areas')}
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
@@ -72,12 +85,12 @@ const Navbar = () => {
               >
                 Pricing
               </button>
-              <button
-                onClick={() => scrollToSection('contact')}
+              <Link
+                to="/contact"
                 className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors"
               >
                 Contact
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -107,12 +120,13 @@ const Navbar = () => {
               >
                 Home
               </button>
-              <button
-                onClick={() => scrollToSection('services')}
+              <Link
+                to="/services"
+                onClick={() => setIsOpen(false)}
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium w-full text-left"
               >
-                Services
-              </button>
+                All Services
+              </Link>
               <button
                 onClick={() => scrollToSection('service-areas')}
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium w-full text-left"
@@ -125,12 +139,13 @@ const Navbar = () => {
               >
                 Pricing
               </button>
-              <button
-                onClick={() => scrollToSection('contact')}
+              <Link
+                to="/contact"
+                onClick={() => setIsOpen(false)}
                 className="block px-3 py-2 text-gray-700 hover:text-blue-600 font-medium w-full text-left"
               >
                 Contact
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}

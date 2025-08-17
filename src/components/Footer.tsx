@@ -1,8 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, Heart } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleServiceClick = (serviceId: string) => {
+    navigate(`/services/${serviceId}`);
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -16,11 +22,11 @@ const Footer = () => {
             className="space-y-4"
           >
             <div className="flex items-center space-x-3">
-              <img 
-                src="/WhatsApp Image 2025-06-15 at 11.19.41_be8207c0.jpg" 
+              {/* <img 
+                src="../../public/updated_logo.jpg" 
                 alt="Seecure Home Health Care Logo" 
                 className="h-12 w-12 rounded-full object-cover"
-              />
+              /> */}
               <span className="font-bold text-xl">Seecure Home Health Care</span>
             </div>
             <p className="text-gray-400 leading-relaxed">
@@ -66,13 +72,30 @@ const Footer = () => {
           >
             <h3 className="text-lg font-semibold mb-4">Our Services</h3>
             <ul className="space-y-2 text-gray-400">
-              <li>• Blood Pressure Measurement - ₹50</li>
-              <li>• IV & IM Injections - ₹100</li>
-              <li>• CBG Analysis - ₹100</li>
-              <li>• IV Cannulation - ₹200</li>
-              <li>• Urinary Catheterization - ₹1000</li>
-              <li>• Blood Collection - No extra charge</li>
-              <li>• Wound Dressing - ₹500 onwards</li>
+              <li 
+                className="hover:text-blue-400 cursor-pointer transition-colors duration-200"
+                onClick={() => handleServiceClick('lab-service')}
+              >
+                Laboratary Service
+              </li>
+              <li 
+                className="hover:text-blue-400 cursor-pointer transition-colors duration-200"
+                onClick={() => handleServiceClick('home-care')}
+              >
+                Home Care Services
+              </li>
+              <li 
+                className="hover:text-blue-400 cursor-pointer transition-colors duration-200"
+                onClick={() => handleServiceClick('procedures')}
+              >
+                Procedure Services
+              </li>
+              <li 
+                className="hover:text-blue-400 cursor-pointer transition-colors duration-200"
+                onClick={() => handleServiceClick('emergency')}
+              >
+                Others
+              </li>
             </ul>
           </motion.div>
         </div>
