@@ -109,7 +109,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <motion.div
@@ -118,10 +118,10 @@ const ContactPage = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-200">
             Contact Us
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-200">
             Get in touch with our healthcare professionals. We're here to provide 
             you with the best medical care at your doorstep.
           </p>
@@ -133,13 +133,13 @@ const ContactPage = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-2xl p-8 shadow-lg"
+            className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg transition-colors duration-200"
           >
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-200">Send us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     First Name *
                   </label>
                   <input
@@ -149,12 +149,12 @@ const ContactPage = () => {
                     required
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="John"
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Last Name *
                   </label>
                   <input
@@ -164,13 +164,13 @@ const ContactPage = () => {
                     required
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Doe"
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Email Address *
                 </label>
                 <input
@@ -180,12 +180,12 @@ const ContactPage = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="john@example.com"
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Phone Number *
                 </label>
                 <div className="relative">
@@ -202,7 +202,7 @@ const ContactPage = () => {
                         setPhoneError('Please enter a valid Indian phone number');
                       }
                     }}
-                    className={`w-full px-4 py-3 border ${phoneError ? 'border-red-500 ring-1 ring-red-500' : 'border-gray-300'} rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+                    className={`w-full px-4 py-3 border ${phoneError ? 'border-red-500 ring-1 ring-red-500' : 'border-gray-300 dark:border-gray-600'} dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                     placeholder="9876543210"
                   />
                   {phoneError && (
@@ -211,11 +211,11 @@ const ContactPage = () => {
                     </div>
                   )}
                 </div>
-                {phoneError && <p className="mt-2 text-sm text-red-600">{phoneError}</p>}
-                {!phoneError && <p className="mt-1 text-xs text-gray-500">Enter a 10-digit number (e.g., 9876543210)</p>}
+                {phoneError && <p className="mt-2 text-sm text-red-600 dark:text-red-400">{phoneError}</p>}
+                {!phoneError && <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">Enter a 10-digit number (e.g., 9876543210)</p>}
               </div>
               <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="service" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Service Required *
                 </label>
                 <select
@@ -224,7 +224,7 @@ const ContactPage = () => {
                   value={formData.service}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value="">Select a service</option>
                   
@@ -269,7 +269,7 @@ const ContactPage = () => {
                 </select>
               </div>
               <div>
-                <label htmlFor="serviceArea" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="serviceArea" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Your Area *
                 </label>
                 <select
@@ -278,7 +278,7 @@ const ContactPage = () => {
                   value={formData.serviceArea}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value="">Select your area</option>
                   {serviceAreas.map((area, index) => (
@@ -290,7 +290,7 @@ const ContactPage = () => {
                 </select>
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Message *
                 </label>
                 <textarea
@@ -300,14 +300,14 @@ const ContactPage = () => {
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                   placeholder="Please provide details about your healthcare needs or specify an area not listed above..."
                 ></textarea>
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 text-white py-4 px-6 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
               >
                 {isSubmitting ? (
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
@@ -347,45 +347,45 @@ const ContactPage = () => {
             className="space-y-8"
           >
             {/* Contact Details */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg transition-colors duration-200">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Get in Touch</h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-6 w-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Phone</h3>
-                    <p className="text-gray-600">Primary: 9593388865</p>
-                    <p className="text-gray-600">Secondary: 6295328031</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">Phone</h3>
+                    <p className="text-gray-600 dark:text-gray-300">Primary: 9593388865</p>
+                    <p className="text-gray-600 dark:text-gray-300">Secondary: 6295328031</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-6 w-6 text-green-600" />
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="h-6 w-6 text-green-600 dark:text-green-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Email</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">Email</h3>
                     <a 
                       href="mailto:seecurehomehealthcare@gmail.com"
-                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                      className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     >
                       seecurehomehealthcare@gmail.com
                     </a>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MessageSquare className="h-6 w-6 text-green-600" />
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MessageSquare className="h-6 w-6 text-green-600 dark:text-green-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">WhatsApp</h3>
-                    <p className="text-gray-600 mb-2">Quick response via WhatsApp</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">WhatsApp</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-2">Quick response via WhatsApp</p>
                     <a
                       href="https://wa.me/9593388865"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                      className="inline-flex items-center space-x-2 bg-green-600 hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-500 text-white px-4 py-2 rounded-lg transition-colors"
                     >
                       <MessageSquare className="h-4 w-4" />
                       <span>Chat on WhatsApp</span>
@@ -393,46 +393,46 @@ const ContactPage = () => {
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-6 w-6 text-purple-600" />
+                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="h-6 w-6 text-purple-600 dark:text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900">Service Areas</h3>
-                    <p className="text-gray-600">Laketown, Kestopur, Baguiati</p>
-                    <p className="text-gray-600">Rajarhat, Chinar Park & nearby areas</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">Service Areas</h3>
+                    <p className="text-gray-600 dark:text-gray-300">Laketown, Kestopur, Baguiati</p>
+                    <p className="text-gray-600 dark:text-gray-300">Rajarhat, Chinar Park & nearby areas</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Operating Hours */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Operating Hours</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg transition-colors duration-200">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Operating Hours</h2>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <Clock className="h-5 w-5 text-blue-600" />
+                  <Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   <div className="flex-1">
                     <div className="flex justify-between">
-                      <span className="font-semibold">Emergency Services</span>
-                      <span className="text-green-600 font-semibold">24/7</span>
+                      <span className="font-semibold dark:text-white">Emergency Services</span>
+                      <span className="text-green-600 dark:text-green-400 font-semibold">24/7</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Clock className="h-5 w-5 text-blue-600" />
+                  <Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   <div className="flex-1">
                     <div className="flex justify-between">
-                      <span className="font-semibold">Regular Services</span>
-                      <span className="text-gray-600">8:00 AM - 8:00 PM</span>
+                      <span className="font-semibold dark:text-white">Regular Services</span>
+                      <span className="text-gray-600 dark:text-gray-300">8:00 AM - 8:00 PM</span>
                     </div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Clock className="h-5 w-5 text-blue-600" />
+                  <Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   <div className="flex-1">
                     <div className="flex justify-between">
-                      <span className="font-semibold">Customer Support</span>
-                      <span className="text-gray-600">24/7</span>
+                      <span className="font-semibold dark:text-white">Customer Support</span>
+                      <span className="text-gray-600 dark:text-gray-300">24/7</span>
                     </div>
                   </div>
                 </div>
