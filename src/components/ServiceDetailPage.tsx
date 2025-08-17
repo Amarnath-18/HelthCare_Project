@@ -48,7 +48,7 @@ const ServiceDetailPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back Navigation */}
         <motion.div
@@ -59,7 +59,7 @@ const ServiceDetailPage = () => {
         >
           <Link
             to="/services"
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold"
+            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors"
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
             Back to All Services
@@ -74,14 +74,14 @@ const ServiceDetailPage = () => {
           className="text-center mb-16"
         >
           <div className="flex justify-center mb-6">
-            <div className="w-24 h-24 bg-blue-100 rounded-2xl flex items-center justify-center">
-              <IconComponent className="h-12 w-12 text-blue-600" />
+            <div className="w-24 h-24 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center">
+              <IconComponent className="h-12 w-12 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-200">
             {service.name}
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto transition-colors duration-200">
             {service.description}
           </p>
         </motion.div>
@@ -102,20 +102,20 @@ const ServiceDetailPage = () => {
                 className="group"
               >
                 <Link to={`/services/${serviceId}/${subService.id}`}>
-                  <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-blue-200 h-full">
+                  <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-500 h-full">
                     <div className="mb-4">
-                      <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
-                        <SubIconComponent className="h-7 w-7 text-blue-600 group-hover:text-white transition-colors duration-300" />
+                      <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900 rounded-xl flex items-center justify-center group-hover:bg-blue-600 dark:group-hover:bg-blue-500 transition-colors duration-300">
+                        <SubIconComponent className="h-7 w-7 text-blue-600 dark:text-blue-400 group-hover:text-white transition-colors duration-300" />
                       </div>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {subService.name}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed mb-4 text-sm">
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 text-sm">
                       {subService.description}
                     </p>
                     <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center text-green-600">
+                      <div className="flex items-center text-green-600 dark:text-green-400">
                         <span className="font-semibold">{subService.price}</span>
                       </div>
                       {subService.duration && (

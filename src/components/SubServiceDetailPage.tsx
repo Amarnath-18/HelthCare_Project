@@ -10,13 +10,13 @@ const SubServiceDetailPage = () => {
 
   if (!service || !subService) {
     return (
-      <div className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 flex items-center justify-center transition-colors duration-200">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Service Not Found</h1>
-          <p className="text-gray-600 mb-8">The service you're looking for doesn't exist.</p>
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-200">Service Not Found</h1>
+          <p className="text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-200">The service you're looking for doesn't exist.</p>
           <Link
             to="/services"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
+            className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white px-6 py-3 rounded-lg transition-colors"
           >
             Back to Services
           </Link>
@@ -36,7 +36,7 @@ const SubServiceDetailPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb Navigation */}
         <motion.div
@@ -45,15 +45,15 @@ const SubServiceDetailPage = () => {
           transition={{ duration: 0.5 }}
           className="mb-8 flex items-center space-x-2 text-sm"
         >
-          <Link to="/services" className="text-blue-600 hover:text-blue-700">
+          <Link to="/services" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
             Services
           </Link>
-          <span className="text-gray-400">/</span>
-          <Link to={`/services/${serviceId}`} className="text-blue-600 hover:text-blue-700">
+          <span className="text-gray-400 dark:text-gray-500">/</span>
+          <Link to={`/services/${serviceId}`} className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
             {service.name}
           </Link>
-          <span className="text-gray-400">/</span>
-          <span className="text-gray-600">{subService.name}</span>
+          <span className="text-gray-400 dark:text-gray-500">/</span>
+          <span className="text-gray-600 dark:text-gray-300">{subService.name}</span>
         </motion.div>
 
         {/* Back Navigation */}
@@ -65,7 +65,7 @@ const SubServiceDetailPage = () => {
         >
           <Link
             to={`/services/${serviceId}`}
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold"
+            className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold transition-colors"
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
             Back to {service.name}
@@ -84,15 +84,15 @@ const SubServiceDetailPage = () => {
             >
               <div className="flex items-start space-x-6">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center">
-                    <IconComponent className="h-10 w-10 text-blue-600" />
+                  <div className="w-20 h-20 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center">
+                    <IconComponent className="h-10 w-10 text-blue-600 dark:text-blue-400" />
                   </div>
                 </div>
                 <div className="flex-1">
-                  <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                  <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-200">
                     {subService.name}
                   </h1>
-                  <p className="text-xl text-gray-600 leading-relaxed">
+                  <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-200">
                     {subService.description}
                   </p>
                 </div>
@@ -104,24 +104,24 @@ const SubServiceDetailPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white rounded-2xl p-8 shadow-lg mb-8"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg mb-8 transition-colors duration-200"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Service Information</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-200">Service Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex items-center space-x-4">
                   <div>
-                    <h3 className="font-semibold text-gray-900">Pricing</h3>
-                    <p className="text-gray-600">{subService.price}</p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white">Pricing</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{subService.price}</p>
                   </div>
                 </div>
                 {subService.duration && (
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                      <Clock className="h-6 w-6 text-blue-600" />
+                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                      <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">Duration</h3>
-                      <p className="text-gray-600">{subService.duration}</p>
+                      <h3 className="font-semibold text-gray-900 dark:text-white">Duration</h3>
+                      <p className="text-gray-600 dark:text-gray-300">{subService.duration}</p>
                     </div>
                   </div>
                 )}
@@ -133,14 +133,14 @@ const SubServiceDetailPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white rounded-2xl p-8 shadow-lg"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg transition-colors duration-200"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">What's Included</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-200">What's Included</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <CheckCircle className="h-5 w-5 text-green-500 dark:text-green-400 flex-shrink-0" />
+                    <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -154,30 +154,30 @@ const SubServiceDetailPage = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white rounded-2xl p-8 shadow-lg sticky top-24"
+              className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg sticky top-24 transition-colors duration-200"
             >
               <div className="text-center mb-6">
-                <div className="text-3xl font-bold text-blue-600 mb-2">
+                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                   {subService.price}
                 </div>
                 {subService.duration && (
-                  <div className="text-gray-600">
+                  <div className="text-gray-600 dark:text-gray-300">
                     Duration: {subService.duration}
                   </div>
                 )}
               </div>
 
               <div className="space-y-4 mb-8">
-                <div className="flex items-center space-x-3 text-sm text-gray-600">
-                  <Shield className="h-5 w-5 text-green-500" />
+                <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300">
+                  <Shield className="h-5 w-5 text-green-500 dark:text-green-400" />
                   <span>Licensed professionals</span>
                 </div>
-                <div className="flex items-center space-x-3 text-sm text-gray-600">
-                  <Star className="h-5 w-5 text-yellow-500" />
+                <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300">
+                  <Star className="h-5 w-5 text-yellow-500 dark:text-yellow-400" />
                   <span>5-star rated service</span>
                 </div>
-                <div className="flex items-center space-x-3 text-sm text-gray-600">
-                  <Phone className="h-5 w-5 text-blue-500" />
+                <div className="flex items-center space-x-3 text-sm text-gray-600 dark:text-gray-300">
+                  <Phone className="h-5 w-5 text-blue-500 dark:text-blue-400" />
                   <span>24/7 support available</span>
                 </div>
               </div>
@@ -185,7 +185,7 @@ const SubServiceDetailPage = () => {
               <div className="space-y-3">
                 <Link
                   to="/contact"
-                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center block"
+                  className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold transition-colors text-center block"
                 >
                   Book This Service
                 </Link>
